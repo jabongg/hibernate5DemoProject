@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration 
+	DTD//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"> -->
+
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<!-- <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/SPADE_DB</property> 
+			<property name="hibernate.connection.username">postgres</property> <property 
+			name="hibernate.connection.password">postgres</property> -->
+
+		<property name="dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
+
+		<property name="c3p0.min_size">5</property>
+		<property name="c3p0.max_size">30</property>
+		<property name="c3p0.timeout">600</property>
+		<property name="c3p0.max_statements">50</property>
+		<property name="c3p0.preferredTestQuery">Select 1</property>
+		<!-- no "connection.pool_size" entry! -->
+
+
+		<property name="show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+
+		<property name="hibernate.dbcp.validationQuery">Select 1</property>
+		<property name="hibernate.dbcp.testOnBorrow">true</property>
+		<property name="hibernate.generate_statistics">true</property>
+
+		<!-- <mapping class="com.nt.cfgs.Employee"/> -->
+		<!-- <mapping class="com.mapping.one2one.User"/> -->
+		<!-- <mapping class="com.mapping.one2one.UserDetail"/> -->
+		
+		<mapping class="com.mapping.many2many.Employee"/>
+		<mapping class="com.mapping.many2many.Address"/>
+		
+		<!-- Mapping files -->
+		<!-- <mapping resource="employee.hbm.xml" /> -->
+		<!-- <mapping resource="student.hbm.xml"/> -->
+	</session-factory>
+
+</hibernate-configuration>
